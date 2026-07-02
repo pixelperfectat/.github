@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "PixelPerfect shared Renovate preset. Extend from a repo: {\"extends\": [\"github>pixelperfectat/.github\"]}",
+  "extends": [
+    "config:recommended",
+    ":semanticCommitsDisabled"
+  ],
+  "labels": ["dependencies"],
+  "schedule": ["before 6am on monday"],
+  "packageRules": [
+    {
+      "description": "Group the shared internal standard so one PR bumps it everywhere it is used",
+      "matchPackageNames": ["pixelperfectat/coding-standard"],
+      "groupName": "pixelperfect coding-standard"
+    },
+    {
+      "description": "Group CI updates (reusable-workflow ref + actions)",
+      "matchManagers": ["github-actions"],
+      "groupName": "ci pipeline"
+    }
+  ]
+}
