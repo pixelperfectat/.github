@@ -5,17 +5,45 @@
     "config:recommended",
     ":semanticCommitsDisabled"
   ],
-  "labels": ["dependencies"],
-  "schedule": ["before 6am on monday"],
+  "labels": [
+    "dependencies"
+  ],
+  "schedule": [
+    "before 6am on monday"
+  ],
   "packageRules": [
     {
+      "description": "Magento 2.4's test framework requires PHPUnit 9.x \u2014 never propose 10+.",
+      "matchPackageNames": [
+        "phpunit/phpunit"
+      ],
+      "allowedVersions": "<10"
+    },
+    {
+      "description": "Magento core (magento/*) tracks the shop's supported line; do not auto-major it.",
+      "matchPackageNames": [
+        "magento/framework"
+      ],
+      "matchPackagePrefixes": [
+        "magento/"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "enabled": false
+    },
+    {
       "description": "Group the shared internal standard so one PR bumps it everywhere it is used",
-      "matchPackageNames": ["pixelperfectat/coding-standard"],
+      "matchPackageNames": [
+        "pixelperfectat/coding-standard"
+      ],
       "groupName": "pixelperfect coding-standard"
     },
     {
       "description": "Group CI updates (reusable-workflow ref + actions)",
-      "matchManagers": ["github-actions"],
+      "matchManagers": [
+        "github-actions"
+      ],
       "groupName": "ci pipeline"
     }
   ]
