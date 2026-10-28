@@ -13,22 +13,17 @@
   ],
   "packageRules": [
     {
-      "description": "Magento 2.4's test framework requires PHPUnit 9.x \u2014 never propose 10+.",
+      "description": "Magento 2.4's test framework requires PHPUnit 9.x — never propose 10+.",
       "matchPackageNames": [
         "phpunit/phpunit"
       ],
       "allowedVersions": "<10"
     },
     {
-      "description": "Magento core (magento/*) tracks the shop's supported line; do not auto-major it.",
+      "description": "Magento core and Hyvä packages are not on Packagist (repo.magento.com, Hyvä's own repositories), and their version ranges are each module's compatibility promise, changed by hand. Don't look them up or propose updates.",
       "matchPackageNames": [
-        "magento/framework"
-      ],
-      "matchPackagePrefixes": [
-        "magento/"
-      ],
-      "matchUpdateTypes": [
-        "major"
+        "magento/**",
+        "hyva-themes/**"
       ],
       "enabled": false
     },
